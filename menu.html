@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="app.js"></script>
+    <!-- Include React and ReactDOM libraries -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!-- Custom CSS -->
+    <style>
+        
+   
+     /* Customize the navbar toggler icon */
+     .navbar-toggler-icon::before {
+            content: "☰"; /* You can use any other suitable icon or text */
+            font-size: 24px;
+        }
+
+        /* Professional styling for the navigation links */
+        .navbar-custom .navbar-nav .nav-item {
+            margin: 0 10px;
+        }
+
+        .navbar-custom .navbar-nav .nav-link {
+            color: #FFF;
+        }
+
+        .navbar-custom .navbar-nav .nav-link:hover {
+            color: #0fcfcc;
+        }
+
+        /* Style the collapsed navigation when toggle icon is clicked */
+        .navbar-custom .navbar-toggler {
+            background-color: #8a8577ee;
+        }
+
+        .navbar-custom .navbar-toggler:focus {
+            outline: none;
+        }
+
+        .navbar-custom .navbar-collapse {
+            background-color: #eacc0bee;
+        }
+    /* Custom CSS for your navigation bar */
+    .navbar-custom {
+        background-color: #c3991ae7; /* Change to your desired background color */
+    }
+
+    .navbar-custom .navbar-nav {
+        align-items: center; /* Center items vertically */
+    }
+
+    .navbar-custom .nav-item {
+            margin-right: 10px; /* Add some margin between items */
+        }
+    .navbar-custom .nav-link {
+        color: #FFF; /* Change link color */
+    }
+
+    .navbar-custom .nav-link:hover {
+        color: #0fcfcc; /* Change link color on hover */
+    }
+    .navbar-custom .nav-link i {
+            margin-right: 5px; /* Add margin to the right of icons */
+        
+        }
+
+    .navbar-custom .search-bar {
+        display: flex;
+    }
+
+    .navbar-custom .form-control {
+        border: none; /* Remove input border */
+        border-radius: none; /* Remove border radius */
+        background-color: #ffffff; /* Change input background color */
+        color: #000000; /* Change input text color */
+    }
+
+    .navbar-custom .form-control:focus {
+        box-shadow: none; /* Remove input focus box shadow */
+    }
+
+    .navbar-custom .input-group-append button {
+        background-color: whitesmoke; /* Remove background color for search button */
+        color: #040000; /* Change button color */
+        cursor: pointer;
+    }
+
+    .navbar-custom .input-group-append button:hover {
+        color: #FFC107; /* Change button color on hover */
+    }
+
+    #navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    body {
+        overflow-x: hidden; /* This hides the horizontal scrollbar */
+    }
+
+    #scrollable-content {
+        max-height: 600px; /* Adjust the height to your preference */
+        width: 100%;
+        overflow-y: auto;
+    }
+
+    /* Add responsive styles */
+    @media (max-width: 768px) {
+        .navbar-custom .nav-item {
+            padding: 0 10px;
+        }
+    }
+         /* Style for the profile dropdown */
+         .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #c58a0bb8; /* Dropdown background color */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 20%;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #fff; /* Dropdown link color */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 40%;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #c3991ae7; /* Dropdown link background color on hover */
+            color: #0fcfcc;
+        }
+
+        /* Style for the secondary dropdown */
+        .sub-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sub-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #c58a0bb8; /* Dropdown background color */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 0;
+            right: 100%;
+            border-radius: 23%;
+        }
+
+        .sub-dropdown:hover .sub-dropdown-content {
+            display: block;
+        }
+        /* Define the keyframes for the zoom effect */
+@keyframes zoomIn {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Apply the animation and shadow to the logo */
+.navbar-brand img {
+    animation: zoomIn 2s infinite;
+    /* You can adjust the duration, iteration count, and other properties */
+    transition: box-shadow 0.3s ease-in-out;
+}
+.navbar-brand img:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Add shadow on hover */
+}
+  .custom-background{
+    background-color: #dba212;
+  }
+
+     /* Your existing CSS styles for menu.html */
+
+/* Make menu cards responsive */
+.card {
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Adjust the card width for smaller screens */
+@media (max-width: 576px) {
+    .card {
+        width: 100%;
+    }
+}
+
+/* Apply a two-column layout for medium-sized screens */
+@media (min-width: 576px) and (max-width: 992px) {
+    .card {
+        width: 48%;
+    }
+}
+
+/* Apply a three-column layout for larger screens */
+@media (min-width: 992px) {
+    .card {
+        width: 31%;
+    }
+}
+
+
+ .card {
+      margin: 10px;
+      padding: 10px;
+  }
+
+  /* Adjust the card width for smaller screens */
+  @media (max-width: 576px) {
+      .card {
+          width: 100%;
+      }
+  }
+
+  /* Apply a two-column layout for medium-sized screens */
+  @media (min-width: 576px) and (max-width: 992px) {
+      .card {
+          width: 48%;
+      }
+  }
+
+  /* Apply a three-column layout for larger screens */
+  @media (min-width: 992px) {
+      .card {
+          width: 31%;
+      }
+  }
+
+  /* Additional styles for the menu cards */
+  .card {
+      transition: transform 0.3s ease; /* Adding a smooth transition on hover */
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Adding a shadow effect */
+      border-radius: 8px; /* Rounded corners for the cards */
+      overflow: hidden;
+  }
+
+  .card:hover {
+      transform: scale(1.05); /* Enlarge the card slightly on hover */
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Enhance the shadow on hover */
+  }
+
+  .card img {
+      width: 100%;
+      height: auto;
+  }
+
+  .card-title {
+      font-size: 1.5em;
+      margin-top: 10px;
+  }
+
+  .card-text {
+      color: #444;
+  }
+
+  .card-text.text-primary {
+      font-weight: bold;
+  }
+
+  .btn-primary {
+      background-color: #FFC107;
+      border: none;
+  }
+
+  .btn-primary:hover {
+      background-color: #FFD54F;
+  }
+  /* Remove existing media queries for card width */
+.card {
+    width: 100%;
+}
+
+/* Additional styles for the menu cards */
+.card {
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px;
+    padding: 10px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+.card-text {
+    color: #444;
+}
+
+.card-text.text-primary {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #FFC107;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #FFD54F;
+}
+/* Style for the rating filter dropdown */
+#rating-filter {
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Adjust the appearance of the dropdown arrow */
+#rating-filter::after {
+    content: '\25BE'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Style changes on dropdown hover and focus */
+#rating-filter:hover,
+#rating-filter:focus {
+    border-color: #FFC107; /* Change border color on hover or focus */
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5); /* Add a subtle shadow */
+}
+
+/* Styling the dropdown options */
+#rating-filter option {
+    padding: 10px;
+    background-color: #fff; /* Dropdown background color */
+    color: #000; /* Dropdown text color */
+}
+
+/* Change appearance of the selected option */
+#rating-filter option:checked {
+    background-color: #FFC107; /* Selected background color */
+    color: #fff; /* Selected text color */
+}
+
+
+    </style>
+</head>
+<body class="custom-background">
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-custom" id="navbar">
+    <a class="navbar-brand" href="#" style="color: #f5f5f5;">EAT@</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/templates/index.html"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-utensils"></i> Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-tags"></i> Offers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-phone"></i> Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-users"></i> About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-star"></i> Specials</a>
+            </li>
+            <div class="dropdown">
+                <a class="nav-link" href="#"><i class="fas fa-user"></i> My Profile</a>
+                <div class="dropdown-content">
+                    <div class="sub-dropdown">
+                        <a href="#">View Profile</a>
+                        <div class="sub-dropdown-content">
+                            <a href="#">Profile Option 1</a>
+                            <a href="#">Profile Option 2</a>
+                        </div>
+                    </div>
+                    <div class="sub-dropdown">
+                        <a href="#">Settings</a>
+                        <div class="sub-dropdown-content">
+                            <a href="#">Setting Option 1</a>
+                            <a href="#">Setting Option 2</a>
+                        </div>
+                    </div>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </ul>
+    </div>
+</nav>
+ <!-- Button to toggle display of vegetarian section -->
+ <div class="bgmnubtn" style="background-color: #444;padding: 3%;">
+    <div class="text-center d-flex justify-content-center my-5" style="padding-top: 3%;">
+        <button class="btn btn-primary mx-3" onclick="showVegetarian()">CLICK HERE TO CHANGE MENU TO VEG & NON VEG</button>
+</div>
+</div>
+<div class="col-md-6">
+    <label for="rating-filter" style="color: #fff;">Filter by Rating:</label>
+    <select id="rating-filter" class="form-select">
+        <option value="0">All Ratings</option>
+        <option value="4.5">Minimum 4.5</option>
+        <option value="4.7">Minimum 4.7</option>
+        <option value="4.8">Minimum 4.8</option>
+        <!-- Add more options if needed -->
+    </select>
+</div>
+<div class="container my-5" id="scrollable-content">
+  <!-- Section for Vegetarian Menu -->
+  <section id="vegetarian-section" class="bg-light py-5">
+    <div class="container">
+        <h2>Vegetarian Menu</h2>
+        <div class="row">
+           <!-- Vegetarian Food Items -->
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_1.jpg" class="card-img-top" alt="Veg Item 1">
+        <div class="card-body">
+            <h5 class="card-title">Margherita Pizza</h5>
+            <p class="card-text">Classic pizza with tomato sauce, mozzarella, and fresh basil.</p>
+            <p class="card-text text-primary">$12.99</p>
+            <p class="card-text">Rating: 4.7</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_2.jpg" class="card-img-top" alt="Veg Item 2">
+        <div class="card-body">
+            <h5 class="card-title">Vegetable Lasagna</h5>
+            <p class="card-text">Layers of pasta, vegetables, marinara, and creamy béchamel sauce.</p>
+            <p class="card-text text-primary">$14.99</p>
+            <p class="card-text">Rating: 4.6</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_3.jpg" class="card-img-top" alt="Veg Item 3">
+        <div class="card-body">
+            <h5 class="card-title">Falafel Plate</h5>
+            <p class="card-text">Crispy falafels served with hummus, pita, and salad.</p>
+            <p class="card-text text-primary">$10.99</p>
+            <p class="card-text">Rating: 4.8</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_4.jpg" class="card-img-top" alt="Veg Item 4">
+        <div class="card-body">
+            <h5 class="card-title">Mushroom Risotto</h5>
+            <p class="card-text">Creamy rice cooked with assorted mushrooms and parmesan.</p>
+            <p class="card-text text-primary">$13.99</p>
+            <p class="card-text">Rating: 4.5</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_5.jpg" class="card-img-top" alt="Veg Item 5">
+        <div class="card-body">
+            <h5 class="card-title">Caprese Salad</h5>
+            <p class="card-text">Fresh tomatoes, mozzarella, basil, and balsamic glaze.</p>
+            <p class="card-text text-primary">$9.99</p>
+            <p class="card-text">Rating: 4.9</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_6.jpg" class="card-img-top" alt="Veg Item 6">
+        <div class="card-body">
+            <h5 class="card-title">Vegetable Stir-Fry</h5>
+            <p class="card-text">A tasty mix of assorted vegetables stir-fried with flavorful sauce.</p>
+            <p class="card-text text-primary">$11.99</p>
+            <p class="card-text">Rating: 4.7</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_7.jpg" class="card-img-top" alt="Veg Item 7">
+        <div class="card-body">
+            <h5 class="card-title">Eggplant Parmesan</h5>
+            <p class="card-text">Breaded eggplant slices with marinara and melted cheese.</p>
+            <p class="card-text text-primary">$12.99</p>
+            <p class="card-text">Rating: 4.6</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_8.jpg" class="card-img-top" alt="Veg Item 8">
+        <div class="card-body">
+            <h5 class="card-title">Spinach and Ricotta Ravioli</h5>
+            <p class="card-text">Homemade ravioli stuffed with spinach and ricotta in tomato sauce.</p>
+            <p class="card-text text-primary">$15.99</p>
+            <p class="card-text">Rating: 4.8</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="veg_item_9.jpg" class="card-img-top" alt="Veg Item 9">
+        <div class="card-body">
+            <h5 class="card-title">Vegetarian Sushi Roll</h5>
+            <p class="card-text">Assorted fresh vegetables wrapped in sushi rice and nori.</p>
+            <p class="card-text text-primary">$14.99</p>
+            <p class="card-text">Rating: 4.7</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+</section>
+<!-- Section for Non-Vegetarian Menu -->
+<section id="non-vegetarian-section" class="bg-light py-5">
+    <div class="container">
+        <h2>Non-Vegetarian Menu</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="non_veg_item_1.jpg" class="card-img-top" alt="Non-Veg Item 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Grilled Steak</h5>
+                        <p class="card-text">Juicy grilled steak seasoned to perfection.</p>
+                        <p class="card-text text-primary">$19.99</p>
+                        <p class="card-text">Rating: 4.8</p>
+                        <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="non_veg_item_2.jpg" class="card-img-top" alt="Non-Veg Item 2">
+                    <div class="card-body">
+                        <h5 class="card-title">BBQ Ribs</h5>
+                        <p class="card-text">Tender BBQ ribs with a smoky flavor.</p>
+                        <p class="card-text text-primary">$16.99</p>
+                        <p class="card-text">Rating: 4.5</p>
+                        <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional non-vegetarian items -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="non_veg_item_3.jpg" class="card-img-top" alt="Non-Veg Item 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Sizzling Bacon Burger</h5>
+                        <p class="card-text">Delicious burger with crispy bacon strips.</p>
+                        <p class="card-text text-primary">$12.99</p>
+                        <p class="card-text">Rating: 4.7</p>
+                        <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat this pattern for additional non-vegetarian items -->
+<div class="col-md-4">
+    <div class="card">
+        <img src="non_veg_item_4.jpg" class="card-img-top" alt="Non-Veg Item 4">
+        <div class="card-body">
+            <h5 class="card-title">Crispy Fried Chicken</h5>
+            <p class="card-text">Golden crispy fried chicken, perfectly seasoned.</p>
+            <p class="card-text text-primary">$11.99</p>
+            <p class="card-text">Rating: 4.6</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="non_veg_item_5.jpg" class="card-img-top" alt="Non-Veg Item 5">
+        <div class="card-body">
+            <h5 class="card-title">Seafood Paella</h5>
+            <p class="card-text">Savory seafood paella with assorted shellfish.</p>
+            <p class="card-text text-primary">$20.99</p>
+            <p class="card-text">Rating: 4.9</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+        <img src="non_veg_item_10.jpg" class="card-img-top" alt="Non-Veg Item 10">
+        <div class="card-body">
+            <h5 class="card-title">Seafood Paella</h5>
+            <p class="card-text">Classic Spanish dish with a variety of seafood and saffron-infused rice.</p>
+            <p class="card-text text-primary">$18.99</p>
+            <p class="card-text">Rating: 4.5</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="non_veg_item_11.jpg" class="card-img-top" alt="Non-Veg Item 11">
+        <div class="card-body">
+            <h5 class="card-title">Honey Glazed Ham</h5>
+            <p class="card-text">Succulent ham roasted and glazed with honey and spices.</p>
+            <p class="card-text text-primary">$17.99</p>
+            <p class="card-text">Rating: 4.6</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="non_veg_item_12.jpg" class="card-img-top" alt="Non-Veg Item 12">
+        <div class="card-body">
+            <h5 class="card-title">Lobster Thermidor</h5>
+            <p class="card-text">Baked lobster in a creamy white wine sauce topped with cheese.</p>
+            <p class="card-text text-primary">$29.99</p>
+            <p class="card-text">Rating: 4.7</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+        <img src="non_veg_item_13.jpg" class="card-img-top" alt="Non-Veg Item 13">
+        <div class="card-body">
+            <h5 class="card-title">Beef Wellington</h5>
+            <p class="card-text">Tender beef fillet encased in puff pastry with a rich mushroom duxelles.</p>
+            <p class="card-text text-primary">$26.99</p>
+            <p class="card-text">Rating: 4.8</p>
+            <a href="/templates/order.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+</section>
+<!-- Button to toggle display of vegetarian section -->
+</div>
+
+
+<script>
+    function showNonVegetarian() {
+        var vegetarianSection = document.getElementById("vegetarian-section");
+        var nonVegetarianSection = document.getElementById("non-vegetarian-section");
+
+        if (vegetarianSection.style.display !== "none") {
+            vegetarianSection.style.display = "none";
+            nonVegetarianSection.style.display = "block";
+        } else {
+            vegetarianSection.style.display = "block";
+            nonVegetarianSection.style.display = "none";
+        }
+    }
+
+    function showVegetarian() {
+        var vegetarianSection = document.getElementById("vegetarian-section");
+        var nonVegetarianSection = document.getElementById("non-vegetarian-section");
+
+        if (nonVegetarianSection.style.display !== "none") {
+            nonVegetarianSection.style.display = "none";
+            vegetarianSection.style.display = "block";
+        } else {
+            nonVegetarianSection.style.display = "block";
+            vegetarianSection.style.display = "none";
+        }
+    }
+
+    // Function to filter food items by rating
+function filterByRating(minimumRating) {
+    const allCards = document.querySelectorAll('.card');
+    
+    allCards.forEach(card => {
+        const ratingElement = card.querySelector('.card-text:last-of-type');
+        const rating = parseFloat(ratingElement.textContent.split(':')[1]);
+        
+        if (rating >= minimumRating || minimumRating === 0) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Event listener for the rating filter dropdown
+document.getElementById('rating-filter').addEventListener('change', function() {
+    const selectedRating = parseFloat(this.value);
+    filterByRating(selectedRating);
+});
+
+</script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

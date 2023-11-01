@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Home</a>
+</nav>
+    <style>
+.form-group {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+    .form-control {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <section class="container my-5">
+        <h2>Payment Options</h2>
+        <p>Choose your preferred payment method:</p>
+        <form>
+            <div class="form-group">
+                <label for="payment-method">Select Payment Method</label>
+                <select class="form-control" id="payment-method" required>
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                    <option value="online-payment">Online Payment</option>
+                </select>
+            </div>
+
+            <!-- Online Payment Options (hidden by default) -->
+            <div id="online-payment-options" style="display: none;">
+                <div class="form-group">
+                    <label for="online-payment-method">Select Online Payment Method</label>
+                    <select class="form-control" id="online-payment-method">
+                        <option value="credit-card">Credit Card</option>
+                        <option value="gpay">Google Pay</option>
+                        <option value="paytm">Paytm</option>
+                        <option value="phonepe">PhonePe</option>
+                        <!-- Add more online payment methods here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Payment Amount (in INR)</label>
+                    <input type="number" class="form-control" id="amount" placeholder="Payment Amount" required>
+                </div>
+            </div>
+            
+            <button><a  type="submit" class="btn btn-primary"href="/templates/conf.html">Proceed to Payment</a></button>
+        </form>
+    </section>
+
+    <!-- JavaScript for handling payment method selection -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const paymentMethodSelect = document.getElementById("payment-method");
+            const onlinePaymentOptions = document.getElementById("online-payment-options");
+    
+            paymentMethodSelect.addEventListener("change", function () {
+                if (paymentMethodSelect.value === "online-payment") {
+                    onlinePaymentOptions.style.display = "block";
+                } else {
+                    onlinePaymentOptions.style.display = "none"; // Corrected line
+                }
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
