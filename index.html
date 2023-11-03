@@ -7,14 +7,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="app.js"></script>
-    <!-- Include React and ReactDOM libraries -->
-<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-
 <style>
      /* Customize the navbar toggler icon */
      .navbar-toggler-icon::before {
-            content: "☰"; /* You can use any other suitable icon or text */
             font-size: 24px;
         }
 
@@ -33,7 +28,7 @@
 
         /* Style the collapsed navigation when toggle icon is clicked */
         .navbar-custom .navbar-toggler {
-            background-color: #8a8577ee;
+            background-color: #e2ae1dee;
         }
 
         .navbar-custom .navbar-toggler:focus {
@@ -43,84 +38,73 @@
         .navbar-custom .navbar-collapse {
             background-color: #eacc0bee;
         }
-    /* Custom CSS for your navigation bar */
-    .navbar-custom {
+        /* Custom CSS for your navigation bar */
+        .navbar-custom {
         background-color: #c3991ae7; /* Change to your desired background color */
-    }
+        }
 
-    .navbar-custom .navbar-nav {
+        .navbar-custom .navbar-nav {
         align-items: center; /* Center items vertically */
-    }
+         }
 
-    .navbar-custom .nav-item {
-            margin-right: 10px; /* Add some margin between items */
+        .navbar-custom .nav-item {
+        margin-right: 10px; /* Add some margin between items */
         }
-    .navbar-custom .nav-link {
+        .navbar-custom .nav-link {
         color: #FFF; /* Change link color */
-    }
-
-    .navbar-custom .nav-link:hover {
-        color: #0fcfcc; /* Change link color on hover */
-    }
-    .navbar-custom .nav-link i {
-            margin-right: 5px; /* Add margin to the right of icons */
-        
         }
 
-    .navbar-custom .search-bar {
+        .navbar-custom .nav-link:hover {
+        color: #0fcfcc; /* Change link color on hover */
+        }
+        .navbar-custom .nav-link i {
+        margin-right: 5px; /* Add margin to the right of icons */
+        }
+        .navbar-custom .search-bar {
         display: flex;
-    }
-
-    .navbar-custom .form-control {
+        }
+        .navbar-custom .form-control {
         border: none; /* Remove input border */
         border-radius: none; /* Remove border radius */
         background-color: #ffffff; /* Change input background color */
         color: #000000; /* Change input text color */
-    }
-
-    .navbar-custom .form-control:focus {
+        }
+        .navbar-custom .form-control:focus {
         box-shadow: none; /* Remove input focus box shadow */
-    }
-
-    .navbar-custom .input-group-append button {
+        }
+        .navbar-custom .input-group-append button {
         background-color: whitesmoke; /* Remove background color for search button */
         color: #040000; /* Change button color */
         cursor: pointer;
-    }
-
-    .navbar-custom .input-group-append button:hover {
+        }
+        .navbar-custom .input-group-append button:hover {
         color: #FFC107; /* Change button color on hover */
-    }
-
-    #navbar {
+        }
+        #navbar {
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;
-    }
-
-    body {
+        }
+        body {
         overflow-x: hidden; /* This hides the horizontal scrollbar */
-    }
-
-    #scrollable-content {
+        }
+        #scrollable-content {
         max-height: 600px; /* Adjust the height to your preference */
         width: 100%;
         overflow-y: auto;
-    }
-
-    /* Add responsive styles */
-    @media (max-width: 768px) {
+        }
+        /* Add responsive styles */
+        @media (max-width: 768px) {
         .navbar-custom .nav-item {
             padding: 0 10px;
         }
-    }
+        }
          /* Style for the profile dropdown */
          .dropdown {
             position: relative;
             display: inline-block;
         }
-
         .dropdown-content {
             display: none;
             position: absolute;
@@ -170,42 +154,54 @@
             display: block;
         }
         /* Define the keyframes for the zoom effect */
-@keyframes zoomIn {
-    0% {
+        @keyframes zoomIn {
+        0% {
         transform: scale(1);
-    }
-    50% {
+        }
+        50% {
         transform: scale(1.1);
-    }
-    100% {
+        }
+        100% {
         transform: scale(1);
-    }
-}
+        }
+        }
+        .head,body{
+        font-family:Georgia, 'Times New Roman', Times, serif; font-style: italic;font-weight: bold; 
+        }
 
-/* Apply the animation and shadow to the logo */
-.navbar-brand img {
-    animation: zoomIn 2s infinite;
-    /* You can adjust the duration, iteration count, and other properties */
-    transition: box-shadow 0.3s ease-in-out;
-}
-.navbar-brand img:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Add shadow on hover */
-}
-  .custom-background{
-    background-color: #dba212;
-  }
+        /* Apply the animation and shadow to the logo */
+        .navbar-brand img {
+        animation: zoomIn 2s infinite;
+        /* You can adjust the duration, iteration count, and other properties */
+        transition: box-shadow 0.3s ease-in-out;
+        }
+        .navbar-brand img:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Add shadow on hover */
+        }
+        .custom-background{
+       background-color: #dba212;
+        }
+        /* CSS for Testimonials Hover Effect */
+        .testimonial-section .testimonial-card {
+         position: relative;
+        transition: transform 0.3s;
+        }
+
+        .testimonial-section .testimonial-card:hover {
+         transform: scale(1.05); /* Increase the card size on hover */
+         box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Add a shadow on hover */
+        }
    </style>
 </head>
-<h1>welcome github</h1>
+
 <body class="custom-background">
     <div id="root">
-<!-- Navbar -->
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-custom" id="navbar">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="/imgs/logo.jpg" alt="Your Logo" width="70" height="50" style="border-radius: 6%;">
-        </a>
+    <a class="navbar-brand" href="#">
+        <img src="/imgs/logo.jpg" alt="Your Logo" width="200" height="100" style="border-radius: 6%; padding-left: 9%;">
+    </a>
+    <div class="container" style="height: fit-content;width: 100;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -234,7 +230,7 @@
                     <a class="nav-link" href="#contact-us-section"><i class="fas fa-phone"></i> Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-star"></i> Specials</a>
+                    <a class="nav-link" href="#specials"><i class="fas fa-star"></i> Specials</a>
                 </li>
                 <li class="nav-item">
                     <div id="map" class="map-only"></div>
@@ -285,7 +281,7 @@
     </div>
 </header>
 
-<div class="container my-5" id="scrollable-content" style="background-color: #f5f5f5;">
+<div class="container my-5" id="scrollable-content" style="background-color: #f0c60aca; border-radius: 3%; color: white;">
     <!-- About Section -->
     <section class="container my-5">
         <h2>About Us</h2>
@@ -316,7 +312,47 @@
     
     <p>Savor the moment, savor the flavor, with Eat@.</p>
     </section>
-    <div id="contact-us-section" id="contact-form-container" class="container my-5"></div>
+    <!-- Testimonials Section -->
+<section class="container my-5 testimonial-section">
+    <h2>What Our Customers Say</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card testimonial-card">
+                <div class="card-body">
+                    <h5 class="card-title">hari</h5>
+                    <p class="card-text">"I love the variety of dishes offered by Eat@. Their delivery is always on time, and the food is delicious!"</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card testimonial-card">
+                <div class="card-body">
+                    <h5 class="card-title">dharanish</h5>
+                    <p class="card-text">"Eat@ has become my go-to choice for ordering food. The quality and taste are outstanding."</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card testimonial-card">
+                <div class="card-body">
+                    <h5 class="card-title">lankeesh</h5>
+                    <p class="card-text">"I've tried several dishes from Eat@, and each one has been a delightful experience. Highly recommended!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Specials Section -->
+<section class="container my-5" id="specials">
+    <h2>Specials</h2>
+    <p>Check out our latest specials and offers:</p>
+    <ul>
+        <li><strong>Today's Special:</strong> Enjoy a 20% discount on our chef's special dish.</li>
+        <li><strong>Weekend Deals:</strong> Every weekend, get a free dessert with your order.</li>
+        <li><strong>Happy Hour:</strong> Join us for happy hour from 4 PM to 6 PM and get 50% off on selected drinks.</li>
+    </ul>
+</section>
+    <div id="contact-us-section" class="container my-5"></div>
     <!-- Contact Section -->
     <section class="container my-5">
         <h2>Contact Us</h2>
@@ -352,10 +388,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-<!-- Include Google Maps API -->
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjRH8zHI6OtfitFnsLwKgikZtVdsw19LE&callback=initMap">
-</script>
+
 <script>
     $(document).ready(function() {
         // Toggle the navigation when the toggle icon is clicked
@@ -363,21 +396,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjRH8zHI6OtfitFnsLwKgikZt
             $('#navbarNav').toggleClass('show');
         });
     });
-</script>
+</script>  
 </div>
-<!-- Include React and ReactDOM libraries -->
-<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-
-<!-- Include your React component -->
-<script type="module" src="contactForm.js"></script>
-<script type="module">
-    import React from 'https://unpkg.com/react@17.0.2/umd/react.production.min.mjs';
-    import ReactDOM from 'https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.mjs';
-    import ContactForm from './contactForm.js'; // Adjust the path as needed
-  
-    ReactDOM.render(<ContactForm />, document.getElementById('contact-form-container'));
-  </script>
-  
 </body>
 </html>
